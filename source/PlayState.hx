@@ -1219,10 +1219,10 @@ class PlayState extends MusicBeatState
 				{
 					Reflect.setProperty(modchartSprites.get(cam), "shader", effect.shader);
 				}
-				else if (modchartTexts.exists(cam))
-				{
-					Reflect.setProperty(modchartTexts.get(cam), "shader", effect.shader);
-				}
+//				else if (modchartTexts.exists(cam))
+//				{
+//					Reflect.setProperty(modchartTexts.get(cam), "shader", effect.shader);
+//				}
 				else
 				{
 					var OBJ = Reflect.getProperty(PlayState.instance, cam);
