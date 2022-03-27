@@ -990,7 +990,7 @@ class PlayState extends MusicBeatState
 
                         versionTxt = new FlxText(5, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() , 16);
 			if (ClientPrefs.noAntimash)
-			versionTxt.text += "| No antimash!"
+			versionTxt.text += "| No antimash!";
 
 			versionTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
                         versionTxt.scrollFactor.set();
