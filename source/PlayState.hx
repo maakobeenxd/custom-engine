@@ -3394,13 +3394,14 @@ class PlayState extends MusicBeatState
                                 case 'sick':
                                         currentTimingShown.color = FlxColor.CYAN;
                         }
+		if (cpuControlled)
+			currentTimingShown.color = FlxColor.ORANGE;
 
                 currentTimingShown.borderStyle = OUTLINE;
                 currentTimingShown.borderSize = 1;
                 currentTimingShown.borderColor = FlxColor.BLACK;
                 currentTimingShown.text = msTiming + "ms";
                 currentTimingShown.size = 20;
-                currentTimingShown.cameras = [camHUD];
 
                 if (currentTimingShown.alpha != 1)  {
                                 currentTimingShown.alpha = 1;
