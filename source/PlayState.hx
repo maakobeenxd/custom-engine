@@ -2162,12 +2162,11 @@ class PlayState extends MusicBeatState
 			scoreTxt.text = 'Score: ' + songScore + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingString + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
                         judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nE';
                         healthCounter.text = 'Health: ' + Math.round(health * 50) + '%'  ;
-		if (cpuControlled)
-			scoreTxt.text +=  '\nBotplay'
 
-		if(cpuControlled) {
+		if (cpuControlled) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
+			scoreTxt.text +=  '\nBotplay'
 		}
 		botplayTxt.visible = cpuControlled;
 
