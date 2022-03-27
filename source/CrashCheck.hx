@@ -9,7 +9,6 @@ import openfl.events.UncaughtErrorEvent;
 import openfl.Lib;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
-import haxe.io.Path;
 import sys.FileSystem;
 class SUtil
 {
@@ -40,7 +39,6 @@ class SUtil
         errMsg += e.error;
         
         Sys.println(errMsg);
-        Sys.println("Crash dump saved in " + Path.normalize(path));
         Sys.println("Making a simple alert ...");
 
         SUtil.applicationAlert("Uncaught Error:", errMsg);
