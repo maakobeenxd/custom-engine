@@ -2166,7 +2166,7 @@ class PlayState extends MusicBeatState
 		if (cpuControlled) {
 			botplaySine += 180 * elapsed;
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
-			scoreTxt.text +=  '\nBotplay'
+			scoreTxt.text +=  '\nBotplay';
 		}
 		botplayTxt.visible = cpuControlled;
 
