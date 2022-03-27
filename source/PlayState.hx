@@ -268,6 +268,7 @@ class PlayState extends MusicBeatState
 	// Lua shit
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = '';
+	public static var instance:PlayState;
 
 	override public function create()
 	{
@@ -279,6 +280,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
+		instance = this;
 		sicks = 0;
                 bads = 0;
 		goods = 0;
