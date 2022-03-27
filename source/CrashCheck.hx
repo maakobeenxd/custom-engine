@@ -6,7 +6,7 @@ import openfl.Lib;
 import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import sys.FileSystem;
-class SUtil
+class CrashCheck
 {
 
     //Thanks Forever Engine
