@@ -674,32 +674,6 @@ class PlayState extends MusicBeatState
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
 		add(luaDebugGroup);
-
-		
-
-        var doPush:Bool = false;
-		// "GLOBAL" SCRIPTS
-                #if LUA_ALLOWED
-                var filesPushed:Array<String> = [];
-                var foldersToCheck:Array<String> = [Paths.getPreloadPath('scripts/')];
-
-               
-
-                for (folder in foldersToCheck)
-                {
-                        if(FileSystem.exists(folder))
-                        {
-                                for (file in FileSystem.readDirectory(folder))
-                                {
-                                        if(file.endsWith('.lua') && !filesPushed.contains(file))
-                                        {
-                                                luaArray.push(new FunkinLua(folder + file));
-                                                filesPushed.push(file);
-                                        }
-                                }
-                        }
-                }
-                #end
 		
 // STAGE SCRIPTS
 		var doPush:Bool = false;
@@ -709,7 +683,7 @@ class PlayState extends MusicBeatState
 			doPush = true;
 		}
 	
-				public function addShaderToCamera(cam:String, effect:ShaderEffect)
+	public function addShaderToCamera(cam:String, effect:ShaderEffect)
 	{ // STOLE FROM ANDROMEDA
 
 		switch (cam.toLowerCase())
@@ -755,7 +729,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
-		public function removeShaderFromCamera(cam:String, effect:ShaderEffect)
+	public function removeShaderFromCamera(cam:String, effect:ShaderEffect)
 	{
 		switch (cam.toLowerCase())
 		{
@@ -786,7 +760,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
-		public function clearShaderFromCamera(cam:String)
+	public function clearShaderFromCamera(cam:String)
 	{
 		switch (cam.toLowerCase())
 		{
