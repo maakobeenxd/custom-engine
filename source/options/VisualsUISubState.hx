@@ -55,7 +55,6 @@ class VisualsUISubState extends BaseOptionsMenu
                         'bool',
                         false);
                 addOption(option);
-		option.onChange = onChangeMemoryCounter;
 /*
 		var option:Option = new Option('Dynamic Cam',
                         'If checked, enables dynamic cam movement it only works with vanilla FNF!.',
@@ -205,9 +204,4 @@ class VisualsUISubState extends BaseOptionsMenu
 			Main.fpsVar.visible = ClientPrefs.showFPS;
 	}
 
-	function onChangeMemoryCounter()
-        {
-                if(Main.memoryCounter != null)
-                        Main.memoryCounter.visible = ClientPrefs.memoryCounter;
-        }	
 }

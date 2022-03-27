@@ -111,6 +111,9 @@ class TitleState extends MusicBeatState
 
 		PlayerSettings.init();
 
+		MusicBeatState.initSave = true; 
+		// Ke fps counter: I want to know if the svae loaded :( pls pls pls
+
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
 		// DEBUG BULLSHIT

@@ -20,6 +20,7 @@ class ClientPrefs {
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
 	public static var iconBoping:Bool = false;
+	public static var fpsRain:Bool = false;
 	public static var noteOffset:Int = 0;
 	public static var speed:Float = 2;
 	public static var noteSize:Float = 0.7;
@@ -99,6 +100,7 @@ class ClientPrefs {
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.iconBoping = iconBoping;
 		FlxG.save.data.tabi = tabi;
+		FlxG.save.data.fpsRain = fpsRain;
 		FlxG.save.data.tabiMax = tabiMax;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
@@ -160,6 +162,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.noAntimash != null) {
                         noAntimash = FlxG.save.data.noAntimash;
+                }
+		if(FlxG.save.data.fpsRain != null) {
+                        fpsRain = FlxG.save.data.fpsRain;
                 }
 		if(FlxG.save.data.healthBarAlpha != null) {
                         healthBarAlpha = FlxG.save.data.healthBarAlpha;

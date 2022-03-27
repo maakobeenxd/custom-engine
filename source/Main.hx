@@ -19,9 +19,11 @@ class Main extends Sprite
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-	public static var fpsVar:FPS;
-	public static var memoryCounter:MemoryCounter;
-
+	// KE fps stuff
+	public static var fpsVar:KadeEngineFPS;
+	public static var bitmapFPS:Bitmap;
+        public static var instance:Main;
+	//end 
 	public static var path:String = System.applicationStorageDirectory;	
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
@@ -73,25 +75,27 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
-		ClientPrefs.startControls();
-		
+		ClientPrefs.startControls();		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
-		fpsVar = new FPS(10, 3, 0xFFFFFF);
+		fpsVar = new KadeEngineFPS(10, 3, 0xFFFFFF);
+                bitmapFPS = ImageOutline.renderImage(fpsVar, 1, 0x000000, true);
+                bitmapFPS.smoothing = true;
 		addChild(fpsVar);
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 
-		memoryCounter = new MemoryCounter(10, 3, 0xFFFFFF);
-                addChild(memoryCounter);
-                if(memoryCounter != null) {
-                        memoryCounter.visible = ClientPrefs.memoryCounter;
-                }
 
 		#if html5
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
 	}
+
+	public function changeFPSColor(color:FlxColor)
+        {
+                fpsVar.textColor = color;
+        }
+
 }

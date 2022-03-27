@@ -194,13 +194,9 @@ class CharacterEditorState extends MusicBeatState
 		FlxG.mouse.visible = true;
 		reloadCharacterOptions();
 
-	    #if mobileC
+     	        #if mobileC
 		addVirtualPad(FULL, A_B_X_Y);
-
-		var camcontrol = new FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		_virtualpad.cameras = [camcontrol];
+		addPadCamera();
 		#end
 
 		super.create();

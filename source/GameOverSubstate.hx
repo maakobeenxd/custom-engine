@@ -64,11 +64,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		#if mobileC
 		addVirtualPad(NONE, A_B);
-		
-		var camcontrol = new FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		_virtualpad.cameras = [camcontrol];
+		addPadCamera();
 		#end
 	}
 

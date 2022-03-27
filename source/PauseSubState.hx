@@ -118,11 +118,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		#if mobileC
 		addVirtualPad(UP_DOWN, A);
-		
-		var camcontrol = new FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		_virtualpad.cameras = [camcontrol];
+		addPadCamera();
 		#end		
 	}
 
