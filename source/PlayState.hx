@@ -83,6 +83,7 @@ class PlayState extends MusicBeatState
 
 	//SHADERS
 	public var camGameShaders:Array<ShaderEffect> = [];
+	public var camcontrolShaders:Array<ShaderEffect> = [];
 	public var camHUDShaders:Array<ShaderEffect> = [];
 	public var camOtherShaders:Array<ShaderEffect> = [];
 	public var shaderUpdates:Array<Float->Void> = [];
@@ -96,6 +97,7 @@ class PlayState extends MusicBeatState
 	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
 	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, Dynamic>();
 	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
+	public var modchartTexts:Map<String, ModchartText> = new Map<String, ModchartText>();
 	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
 	#end
 
@@ -1185,7 +1187,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-			public function addShaderToCamera(cam:String, effect:ShaderEffect)
+	public function addShaderToCamera(cam:String, effect:ShaderEffect)
 	{ // STOLE FROM ANDROMEDA
 
 		switch (cam.toLowerCase())
@@ -1214,6 +1216,14 @@ class PlayState extends MusicBeatState
 					newCamEffects.push(new ShaderFilter(i.shader));
 				}
 				camGame.setFilters(newCamEffects);
+			case 'camcontrol' | 'control':
+                                camcontrolShaders.push(effect);
+                                var newCamEffects:Array<BitmapFilter> = []; // IT SHUTS>
+                                for (i in camGameShaders)
+                                {
+                                        newCamEffects.push(new ShaderFilter(i.shader));
+                                }
+                                camcontrol.setFilters(newCamEffects);
 			default:
 				if (modchartSprites.exists(cam))
 				{
@@ -1251,6 +1261,14 @@ class PlayState extends MusicBeatState
 					newCamEffects.push(new ShaderFilter(i.shader));
 				}
 				camOther.setFilters(newCamEffects);
+			case 'control' | 'control':
+                                camcontrolShaders.remove(effect);
+                                var newCamEffects:Array<BitmapFilter> = [];
+                                for (i in camcontrolShaders)
+                                {
+                                        newCamEffects.push(new ShaderFilter(i.shader));
+                                }
+                                camOther.setFilters(newCamEffects);
 			default:
 				camGameShaders.remove(effect);
 				var newCamEffects:Array<BitmapFilter> = [];
@@ -1262,7 +1280,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
-		public function clearShaderFromCamera(cam:String)
+	public function clearShaderFromCamera(cam:String)
 	{
 		switch (cam.toLowerCase())
 		{
@@ -1274,6 +1292,10 @@ class PlayState extends MusicBeatState
 				camOtherShaders = [];
 				var newCamEffects:Array<BitmapFilter> = [];
 				camOther.setFilters(newCamEffects);
+			case 'camcontrol' | 'control':
+                                camcontrolsShaders = [];
+                                var newCamEffects:Array<BitmapFilter> = [];
+                                camcontrols.setFilters(newCamEffects);
 			default:
 				camGameShaders = [];
 				var newCamEffects:Array<BitmapFilter> = [];
