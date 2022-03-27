@@ -37,7 +37,7 @@ class CrashCheck
         Sys.println(errMsg);
         Sys.println("Making a simple alert ...");
 
-        SUtil.applicationAlert("Uncaught Error:", errMsg);
+        CrashCheck.applicationAlert("Uncaught Error:", errMsg);
         flash.system.System.exit(0);
     }
 	
