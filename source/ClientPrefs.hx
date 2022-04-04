@@ -19,7 +19,6 @@ class ClientPrefs {
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
-	public static var iconBoping:Bool = false;
 	public static var noteOffset:Int = 0;
 	public static var speed:Float = 2;
 	public static var noteSize:Float = 0.7;
@@ -28,21 +27,26 @@ class ClientPrefs {
 	public static var imagesPersist:Bool = false;
 	public static var ghostTapping:Bool = true;
 	public static var timeBarType:String = 'Time Left';
-	public static var keTimeBar:Bool = false;
-	public static var arrowOpacity:Float = 1;
-	public static var laneOpacity:Float = 1;
-	public static var healthBarAlpha:Float = 1;
-	public static var playHitSounds:Bool = false;
-	public static var dynamicCam:Bool = false;
-	public static var opponentLaneOpacity:Float = 1;
-	public static var healthCounter:Bool = false;
-	public static var opponentArrowOpacity:Float = 1;
-	public static var memoryCounter:Bool = false;
-	public static var judgements:Bool = false;
-	public static var tabi:Bool = false;
-	public static var tabiMax:Int = 3;
-	public static var scoreType:String = 'Kade Engine';
-	public static var noAntimash:Bool = false;
+	// My Engine Stuff
+        // Tabi stuff lol
+        public static var tabi:Bool = false;
+        public static var tabiMax:Int = 2;
+        // Ui stuff
+        public static var scoreType:String = 'Kade Engine';
+        public static var scoreStyle:String = 'Random Engine';
+        public static var healthCounter:Bool = false;
+        public static var judgements:Bool = true;
+        public static var iconBoping:Bool = false;
+        public static var detachedCam:Bool = false;
+        public static var keTimeBar:Bool = false;
+        // Arrow opacity stuff
+        public static var arrowOpacity:Float = 1;
+        public static var opponentArrowOpacity:Float = 1;
+        // Misc Stuff
+        public static var antimash:Bool = true;
+        public static var memoryCounter:Bool = false;
+        public static var playHitSound:Bool = false;
+// End
 
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState.hx)'s list
 	public static var keyBinds:Map<String, Dynamic> = new Map<String, Dynamic>();
@@ -84,25 +88,33 @@ class ClientPrefs {
 		FlxG.save.data.speed = speed;
 		FlxG.save.data.scroll = scroll;
 		FlxG.save.data.noteSize = noteSize;
-		FlxG.save.data.keTimeBar = keTimeBar;
-		FlxG.save.data.timeBarType = timeBarType;
-		FlxG.save.data.playHitSounds = playHitSounds;
-		FlxG.save.data.dynamicCam = dynamicCam;
-		FlxG.save.data.scoreType = scoreType;
-		FlxG.save.data.healthCounter = healthCounter;
-		FlxG.save.data.arrowOpacity = arrowOpacity;
-		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
-		FlxG.save.data.laneOpacity = laneOpacity;
-		FlxG.save.data.opponentLaneOpacity = opponentLaneOpacity;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
-		FlxG.save.data.iconBoping = iconBoping;
-		FlxG.save.data.tabi = tabi;
-		FlxG.save.data.tabiMax = tabiMax;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
+		// My Engine stuff
+                // Tabi stuff
+                FlxG.save.data.tabi = tabi;
+                FlxG.save.data.tabiMax = tabiMax;
+                // Misc stuff
+                FlxG.save.data.memoryCounter = memoryCounter;
+                FlxG.save.data.antimash = antimash;
+                FlxG.save.data.playHitSound = playHitSound;
+                // UI stuff
+                FlxG.save.data.judgements = judgements;
+                FlxG.save.data.healthCounter = healthCounter;
+                FlxG.save.data.scoreType = scoreType;
+                FlxG.save.data.scoreStyle = scoreStyle;
+                FlxG.save.data.iconBoping = iconBoping;
+                FlxG.save.data.detachedCam = detachedCam;
+                FlxG.save.data.keTimeBar = keTimeBar;
+                // Arrow opacity
+                FlxG.save.data.arrowOpacity = arrowOpacity;
+                FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
+// End
+		FlxG.save.data.timeBarType = timeBarType;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 		FlxG.save.flush();
@@ -158,57 +170,6 @@ class ClientPrefs {
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
 		}
-		if(FlxG.save.data.noAntimash != null) {
-                        noAntimash = FlxG.save.data.noAntimash;
-                }
-		if(FlxG.save.data.healthBarAlpha != null) {
-                        healthBarAlpha = FlxG.save.data.healthBarAlpha;
-                }
-		if(FlxG.save.data.laneOpacity != null) {
-                        laneOpacity = FlxG.save.data.laneOpacity;
-                }
-		if(FlxG.save.data.arrowOpacity != null) {
-                        arrowOpacity = FlxG.save.data.arrowOpacity;
-                }
-		if(FlxG.save.data.memoryCounter != null) {
-                        memoryCounter = FlxG.save.data.memoryCounter;
-                }
-		if(FlxG.save.data.playHitSounds != null) {
-                        playHitSounds = FlxG.save.data.playHitSounds;
-                }
-		if(FlxG.save.data.dynamicCam != null) {
-                        dynamicCam = FlxG.save.data.dynamicCam;
-                }
-		if(FlxG.save.data.opponentArrowOpacity != null) {
-                        opponentArrowOpacity = FlxG.save.data.opponentArrowOpacity;
-                }
-		if(FlxG.save.data.opponentLaneOpacity != null) {
-                        opponentLaneOpacity = FlxG.save.data.opponentLaneOpacity;
-                }
-		if(FlxG.save.data.scoreType != null) {
-                        scoreType = FlxG.save.data.scoreType;
-                }
-		if(FlxG.save.data.iconBoping != null) {
-                        iconBoping = FlxG.save.data.iconBoping;
-                }
-		if(FlxG.save.data.tabi != null) {
-			tabi = FlxG.save.data.tabi;
-                }
-		if(FlxG.save.data.tabiMax != null) {
-			tabiMax = FlxG.save.data.tabiMax;
-                }
-		if(FlxG.save.data.timeBarType != null) {
-                        timeBarType = FlxG.save.data.timeBarType;
-                }
-		if(FlxG.save.data.judgements != null) {
-                        judgements = FlxG.save.data.judgements;
-                }
-		if(FlxG.save.data.healthCounter != null) {
-                        healthCounter = FlxG.save.data.healthCounter;
-                }
-		if(FlxG.save.data.keTimeBar != null) {
-                        keTimeBar = FlxG.save.data.keTimeBar;
-                }
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;
 		}
@@ -234,7 +195,54 @@ class ClientPrefs {
 		if(FlxG.save.data.ghostTapping != null) {
 			ghostTapping = FlxG.save.data.ghostTapping;
 		}
-		
+		//My Engine stuff
+                //Tabi stuff
+                if(FlxG.save.data.tabi != null) {
+                        tabi = FlxG.save.data.tabi;
+                }
+                if(FlxG.save.data.tabiMax != null) {
+                        tabiMax = FlxG.save.data.tabiMax;
+                }
+                // UI stuff
+                if(FlxG.save.data.healthCounter != null) {
+                        healthCounter = FlxG.save.data.healthCounter;
+                }
+                if(FlxG.save.data.judgements != null) {
+                        judgements = FlxG.save.data.judgements;
+                }
+                if(FlxG.save.data.scoreType != null) {
+                        scoreType = FlxG.save.data.scoreType;
+                }
+                if(FlxG.save.data.scoreStyle != null) {
+                        scoreStyle = FlxG.save.data.scoreStyle;
+                }
+                if(FlxG.save.data.iconBoping != null) {
+                        iconBoping = FlxG.save.data.iconBoping;
+                }
+                if(FlxG.save.data.detachedCam != null) {
+                        detachedCam = FlxG.save.data.detachedCam;
+                }
+                // Arrow Opacity
+                if(FlxG.save.data.arrowOpacity != null) {
+                        arrowOpacity = FlxG.save.data.arrowOpacity;
+                }
+                if(FlxG.save.data.opponentArrowOpacity != null) {
+                        opponentArrowOpacity = FlxG.save.data.opponentArrowOpacity;
+                }
+                // Misc stuff
+                if(FlxG.save.data.memoryCounter != null) {
+                        memoryCounter = FlxG.save.data.memoryCounter;
+                }
+                if(FlxG.save.data.antimash != null) {
+                        antimash = FlxG.save.data.antimash;
+                }
+                if(FlxG.save.data.playHitSound != null) {
+                        playHitSound = FlxG.save.data.playHitSound;
+                }
+        // End
+		if(FlxG.save.data.timeBarType != null) {
+                        timeBarType = FlxG.save.data.timeBarType;
+                }
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null) {
 			FlxG.sound.volume = FlxG.save.data.volume;

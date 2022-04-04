@@ -1,4 +1,13 @@
-AMONGUSS
+This is my custom copy of psych engine
+its mostly things from kade
+i just added my own options and added and fixed stuffs.
+## Credits:
+* Discussions page - Icon boping
+* Kade Engine - Kade options and stuffs
+* Vs Tabi - Tabi option lol
+* Jigsaw - Porting psych engine
+* Randomxd(me) - Putting it all together,and also some stuffs and some fixes
+
 # Friday Night Funkin' - Psych Engine
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 

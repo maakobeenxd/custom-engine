@@ -27,44 +27,39 @@ import Controls;
 
 using StringTools;
 
-class VisualsUISubState extends BaseOptionsMenu
+class ReUISubState extends BaseOptionsMenu
 {
 	public function new()
 	{
-		title = 'Custom Options';
-		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
-
-		var option:Option = new Option('Score Type:',                                                                  
-			"What should be the score type?",
+		var option:Option = new Option('Score Type:',
+			"What should the score be like?",
                         'scoreType',
                         'string',
-                        'Psych Engine',
-                        ['Psych Engine', 'Kade Engine', 'Disabled']);
+                        'Kade Engine',
+                        ['Kade Engine', 'Psych Engine', 'Disabled']);
+                addOption(option);
+
+		var option:Option = new Option('Score Style:',
+                        "What should the score look like?",
+                        'scoreStyle',
+			'string',
+                        'Random Engine',
+                        ['Random Engine', 'Psych Engine', 'Score Only']);
                 addOption(option);
 
 		var option:Option = new Option('Memory Counter',
-			'If unchecked, disables memory counter.',
+			'If unchecked, disables the memory counter.',
                         'memoryCounter',
                         'bool',
-                        true);
+                        false);
                 addOption(option);
-		option.onChange = onChangeMemoryCounter;
 
 		var option:Option = new Option('Health Counter',
-                        'If unchecked, hides the health counter.',
+                        'If checked, enables the health counter.',
                         'healthCounter',
                         'bool',
-                        true);
+                        false);
                 addOption(option);
-		
-		var option:Option = new Option('Time Bar:',
-			"What should the Time Bar display?",
-			'timeBarType',
-			'string',
-			'Time Left',
-			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
-		addOption(option);
-
 
 		var option:Option = new Option('Judgements',
                         'If unchecked, hides judgements.',
@@ -72,31 +67,20 @@ class VisualsUISubState extends BaseOptionsMenu
                         'bool',
                         true);
                 addOption(option);
-
-		var option:Option = new Option('No Antimash',
-                        'If checked, disables antimash.',
-                        'noAntimash',
-                        'bool',
-                        true);
-                addOption(option);
 		
-		var option:Option = new Option('KE Timebar',
-                        'If checked, uses the KE timebar.',
-                        'keTimeBar',
+		var option:Option = new Option('Play Hit Sounds',
+                        'If checked enables hit sound.',
+                        'playHitSound',
                         'bool',
                         false);
                 addOption(option);
-		var option:Option = new Option('Health Bar Opacity',
-			'How Opaque should the health bar and icons be.',
-			'healthBarAlpha',
-			'percent',
-			1);
-		option.scrollSpeed = 1.6;
-		option.minValue = 0.0;
-		option.maxValue = 1;
-		option.changeValue = 0.1;
-		option.decimals = 1;
-		addOption(option);
+
+		var option:Option = new Option('Detached Ratings',
+                        'If checked, detaches the ratings from the camera.',
+                        'detachedCam',
+                        'bool',
+                        false);
+                addOption(option);
 
 		var option:Option = new Option('Arrows Opacity',
                         'How Opaque should the arrows be.',
@@ -110,7 +94,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
                 addOption(option);
 
-		var option:Option = new Option('Lane Opacity',
+/*		var option:Option = new Option('Lane Opacity',
                         'How Opaque should the lane underlay be.',
                         'laneOpacity',
                         'percent',
@@ -128,12 +112,12 @@ class VisualsUISubState extends BaseOptionsMenu
                         'percent',
                         1);
                 option.scrollSpeed = 1.6;
-                option.minValue = 0.0;
+z                option.minValue = 0.0;
                 option.maxValue = 1;
                 option.changeValue = 0.1;
                 option.decimals = 1;
-                addOption(option);
-
+                addOption(option);  still pretty buggy :(
+*/
                 var option:Option = new Option('Enemy Arrows Opacity',
                         'How Opaque should the opponent arrows be.',
                         'opponentArrowOpacity',
@@ -162,10 +146,4 @@ class VisualsUISubState extends BaseOptionsMenu
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.showFPS;
 	}
-
-	function onChangeMemoryCounter()
-        {
-                if(Main.memoryCounter != null)
-                        Main.memoryCounter.visible = ClientPrefs.memoryCounter;
-        }	
 }
