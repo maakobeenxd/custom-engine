@@ -2250,7 +2250,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		
-			updateScore()
+			updateScore();
                         judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nE';
                         healthCounter.text = 'Health: ' + Math.round(health * 50) + '%'  ;
 		
