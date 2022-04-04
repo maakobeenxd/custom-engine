@@ -1333,7 +1333,7 @@ class PlayState extends MusicBeatState
                         case 'camother' | 'other':
                                 camOtherShaders.remove(effect);
                                 var newCamEffects:Array<BitmapFilter> = [];
-                                for (i in camOtherShade
+                                for (i in camOtherShaders)
 				{
                                         newCamEffects.push(new ShaderFilter(i.shader));          
 				}
