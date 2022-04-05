@@ -53,7 +53,7 @@ class OptionsState extends MusicBeatState
 			case 'Gameplay':
 				openSubState(new options.GameplaySettingsSubState());
 			case 'Mobile Controls':
-				MusicBeatState.switchState(new ui.Mobilecontrols());
+				MusicBeatState.switchState(new options.CustomControlsState());
 		}
 	}
 
