@@ -3381,7 +3381,7 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8); 
-		if (ClientPrefs.playHitSounds)
+		if (ClientPrefs.playHitSound)
 			FlxG.sound.play(Paths.sound('Tick'));
 		
 		// boyfriend.playAnim('hey');
