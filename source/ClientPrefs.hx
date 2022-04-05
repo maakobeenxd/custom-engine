@@ -35,6 +35,7 @@ class ClientPrefs {
         public static var scoreType:String = 'Kade Engine';
         public static var scoreStyle:String = 'Random Engine';
         public static var healthCounter:Bool = false;
+	public static var healthBarAlpha:Float = 1;
         public static var judgements:Bool = true;
         public static var iconBoping:Bool = false;
         public static var detachedCam:Bool = false;
@@ -115,6 +116,7 @@ class ClientPrefs {
                 FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
 // End
 		FlxG.save.data.timeBarType = timeBarType;
+		FlxG.save.data.healthBarAlpha = healthBarAlpha;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 		FlxG.save.flush();
@@ -170,6 +172,9 @@ class ClientPrefs {
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
 		}
+		if(FlxG.save.data.healthBarAlpha != null) {                                  
+			healthBarAlpha = FlxG.save.data.healthBarAlpha;
+                }
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;
 		}

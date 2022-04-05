@@ -51,6 +51,7 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Shaders;
 import openfl.filters.ShaderFilter;
+import openfl.filters.BitmapFilter;
 
 #if sys
 import Sys;
@@ -883,7 +884,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-
+		/*
 		laneunderlayOpponent = new FlxSprite(0, 0).makeGraphic(110 * 4 + 50, FlxG.height * 2);
                 laneunderlayOpponent.alpha = ClientPrefs.opponentLaneOpacity;
                 laneunderlayOpponent.color = FlxColor.BLACK;
@@ -894,7 +895,7 @@ class PlayState extends MusicBeatState
                 laneunderlay.color = FlxColor.BLACK;
                 laneunderlay.scrollFactor.set();
 
-               /* if (!ClientPrefs.middleScroll)
+                if (!ClientPrefs.middleScroll)
                         {
                                 add(laneunderlayOpponent);
                         }
@@ -1191,7 +1192,7 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote1'); 
 		CoolUtil.precacheSound('missnote2'); 
 		CoolUtil.precacheSound('missnote3'); 
-		if (ClientPrefs.playHitSounds) {
+		if (ClientPrefs.playHitSound) {
 			CoolUtil.precacheSound('Tick'); 
 			FlxG.sound.play(Paths.sound('Tick'), 0); 
 		}
@@ -1265,10 +1266,10 @@ class PlayState extends MusicBeatState
 		switch (ClientPrefs.scoreStyle)
 		{
                         case 'Random Engine':
-				   scoreTxt.text = lol + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingName + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
+				   scoreTxt.text = lol + ' // Misses: ' + songMisses + ' // Acc: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ' // Rank: ' + ratingString + ' (' + ratingFC + ')' ;//peeps wanted no integer rating
 				
                         case 'Psych Engine':
-                                   scoreTxt.text = lol + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName  + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
+                                   scoreTxt.text = lol + ' | Misses: ' + songMisses + ' | Rating: ' + ratingString  + ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;//peeps wanted no integer rating
              
 	                }
          }
